@@ -1,0 +1,35 @@
+import aparatos.*
+import personas.*
+
+describe "Rutinas" {
+	
+	const bici1= new Bicicleta()
+	const magneto1= new Magneto()
+	
+	const bici2= new Bicicleta()
+	const magneto2= new Magneto()
+	const mini2= new Minitramp() 
+	
+	const leonardo = new Paciente(edad= 40, nivelDeDolor= 10, fortalezaMuscular= 20, aparatos= [magneto2, bici2, mini2])
+	const milena= new Paciente(edad= 3, nivelDeDolor= 30, fortalezaMuscular= 50,  aparatos= [magneto1, bici1])
+	
+	test "Leonardo puede hacer la rutina que tiene asignada" {
+
+		assert.that(leonardo.puedeHacerRutina())
+
+	}
+	
+	test "Despues de hacerla una vez, su nivel de dolor baja a 1.8 y su fortaleza sube a 30" {
+		leonardo.hacerRutina()
+		assert.equals(1.8, leonardo.nivelDeDolor())
+		assert.equals(30, leonardo.fortalezaMuscular())
+
+	}
+	
+	test "Milena no puede hacer la rutina que tiene asignada" {
+
+		assert.equals(false, milena.puedeHacerRutina())
+
+	}
+	
+}

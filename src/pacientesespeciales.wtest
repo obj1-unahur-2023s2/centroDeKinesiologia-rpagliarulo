@@ -1,0 +1,69 @@
+import aparatos.*
+import personas.*
+
+describe "Pacientes especiales" {
+	
+	const bici2= new Bicicleta(color="blanco")
+	const magneto2= new Magneto(color="blanco")
+	const mini2= new Minitramp(color="blanco") 
+	
+	const bici3= new Bicicleta(color= "rojo")
+	const magneto3= new Magneto(color= "verde")
+	const bici4= new Minitramp(color= "blanco") 
+	
+	const nicolas= new PacienteResistente(edad= 40, nivelDeDolor=10, fortalezaMuscular= 20, aparatos= [magneto2, bici2, mini2])
+	const victoria= new PacienteCaprichoso(edad= 30, nivelDeDolor=10, fortalezaMuscular= 40, aparatos= [magneto2, bici2, mini2])
+	const julian= new PacienteCaprichoso(edad= 20, nivelDeDolor=54, fortalezaMuscular= 50, aparatos=[bici3, magneto3, bici4])
+	const zoe= new PacienteRapidaRecuperacion(edad= 50, nivelDeDolor=14, fortalezaMuscular= 40, aparatos= [magneto2, bici2, mini2])
+	
+	test "Nicolás puede hacer la rutina que tiene asignada." {
+
+		assert.that(nicolas.puedeHacerRutina())
+
+	}
+	
+	test "Después de hacerla una vez, su nivel de dolor baja a 1.8, y su fortaleza sube a 34." {
+		
+		nicolas.hacerRutina()
+		assert.equals(1.8, nicolas.nivelDeDolor())
+		assert.equals(34, nicolas.fortalezaMuscular())
+	}
+	
+	test "Victoria no puede hacer la rutina que tiene asignada." {
+
+		assert.equals(false, victoria.puedeHacerRutina())
+
+	}
+	
+	test "Julián puede hacer la rutina que tiene asignada." {
+
+		assert.that(julian.puedeHacerRutina())
+
+	}
+	
+	test "Después de hacerla una vez, su nivel de dolor baja a 29.3, y su fortaleza sube a 62." {
+
+		julian.hacerRutina()
+		assert.equals(29.3, julian.nivelDeDolor())
+		assert.equals(62, julian.fortalezaMuscular())
+
+	}
+	
+	test "Zoe puede hacer la rutina que tiene asignada." {
+
+		assert.that(zoe.puedeHacerRutina())
+
+	}
+
+/* 
+	test "Después de asignar a 2 el valor de decremento de dolor para pacientes de rápida recuperación, 
+		y de que Zoe haga su rutinauna vez, su nivel de dolor baja a 3.4, y su fortaleza sube a 51." {
+		
+		assert.that()
+
+	}
+	
+*/
+
+}
+
