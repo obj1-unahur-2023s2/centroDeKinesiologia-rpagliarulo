@@ -9,7 +9,7 @@ describe "Pacientes especiales" {
 	
 	const bici3= new Bicicleta(color= "rojo")
 	const magneto3= new Magneto(color= "verde")
-	const bici4= new Minitramp(color= "blanco") 
+	const bici4= new Bicicleta(color= "blanco") 
 	
 	const nicolas= new PacienteResistente(edad= 40, nivelDeDolor=10, fortalezaMuscular= 20, aparatos= [magneto2, bici2, mini2])
 	const victoria= new PacienteCaprichoso(edad= 30, nivelDeDolor=10, fortalezaMuscular= 40, aparatos= [magneto2, bici2, mini2])
@@ -55,15 +55,19 @@ describe "Pacientes especiales" {
 
 	}
 
-/* 
+  
 	test "Después de asignar a 2 el valor de decremento de dolor para pacientes de rápida recuperación, 
 		y de que Zoe haga su rutinauna vez, su nivel de dolor baja a 3.4, y su fortaleza sube a 51." {
 		
-		assert.that()
+		zoe.puntosDeDolorQueDecrementa(2)
+		zoe.hacerRutina()
+		assert.equals(3.4, zoe.nivelDeDolor())
+		assert.equals(51, zoe.fortalezaMuscular())
 
 	}
 	
-*/
+
 
 }
+
 

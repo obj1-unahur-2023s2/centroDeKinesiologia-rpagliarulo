@@ -10,8 +10,10 @@ class Paciente {
 	
 	method usar(aparato) {
 		if (self.puedeUsar(aparato))
-		 {nivelDeDolor -= 0.max(aparato.reduccionDeDolor(self)) 
-		fortalezaMuscular += 0.max(aparato.aumentoFortalezaMuscular(self)) }
+		 { aparato.consecuenciaDeUso(self)
+		   nivelDeDolor -= 0.max(aparato.reduccionDeDolor(self)) 
+		   fortalezaMuscular += 0.max(aparato.aumentoFortalezaMuscular(self))
+		 }
 	}
 	
 	method nivelDeDolor()= nivelDeDolor

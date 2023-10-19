@@ -1,0 +1,119 @@
+import centro.*
+import personas.*
+import aparatos.*
+
+describe "Magneto" {
+	
+	const magneto1= new Magneto(color= "verde")
+	const julian= new PacienteCaprichoso(edad= 20, nivelDeDolor=54, fortalezaMuscular= 50, aparatos=[magneto1])
+
+	test "Un magneto nuevo tiene 800 puntos de imantación" {
+
+		assert.equals(800, magneto1.imantacion())
+
+	}
+	
+	test "pierde un punto de imantación en cada uso" {
+		
+		julian.usar(magneto1)
+		assert.equals(799, magneto1.imantacion())
+
+	}
+	
+	test "Como tiene mas de 100 puntos, no necesita mantenimiento" {
+
+		assert.equals(false, magneto1.necesitaMantenimiento())
+
+	}
+	
+	test "Hacerle mantenimiento implica agregar 500 puntos de imantacion" {
+		magneto1.recibirMantenimiento()
+		assert.equals(1300, magneto1.imantacion())
+
+	}
+}
+
+describe "Bicicleta" {
+	
+	const bici1= new Bicicleta(color= "rojo")
+	const bici2= new Bicicleta(color= "rojo")
+	
+	const victoria= new PacienteResistente(edad= 29, nivelDeDolor=40, fortalezaMuscular= 20, aparatos= [bici1])
+	const mariela= new PacienteResistente(edad= 35, nivelDeDolor=10, fortalezaMuscular= 40, aparatos= [bici2])
+
+	test "Si el nivel de dolor del paciente antes del uso es mayor a 30, entonces se desajustan los tornillos. " {
+		
+		victoria.usar(bici1)
+		assert.that(bici1.vecesQueSeDesajustaronLosTornillos() == 1)
+
+	}
+	
+		
+	test "como el nivel de dolor del paciente es menor a 30, no se desajustan los tornillos" {
+		
+		mariela.usar(bici2)
+		assert.that(bici2.vecesQueSeDesajustaronLosTornillos() == 0)
+
+	}
+	
+	test "Si además tiene entre 30 y 50 años, pierde aceite." {
+		mariela.usar(bici2)
+		assert.that(bici2.vecesQuePerdioAceite()== 1)
+
+	}
+	
+	test "Una bicicleta necesita mantenimiento se se le han desjustado los tornillos al menos 10 veces, o si perdió aceite al menos 5 veces, desde el último mantenimiento." {
+
+		assert.that(!bici1.necesitaMantenimiento())
+		assert.that(!bici2.necesitaMantenimiento())
+
+	}
+}
+
+describe "Centro de Kinesiología" {
+	
+	const bici2= new Bicicleta(color="blanco")
+	const magneto2= new Magneto(color="blanco")
+	const mini2= new Minitramp(color="blanco") 
+	
+	const bici3= new Bicicleta(color= "rojo")
+	const magneto3= new Magneto(color= "verde")
+	const bici4= new Bicicleta(color= "blanco") 
+	
+	const nicolas= new PacienteResistente(edad= 7, nivelDeDolor=10, fortalezaMuscular= 20, aparatos= [magneto2, bici2, mini2])
+	const victoria= new PacienteCaprichoso(edad= 30, nivelDeDolor=10, fortalezaMuscular= 40, aparatos= [magneto2, bici2, mini2])
+	const julian= new PacienteCaprichoso(edad= 20, nivelDeDolor=54, fortalezaMuscular= 50, aparatos=[bici3, magneto3, bici4])
+	const zoe= new PacienteRapidaRecuperacion(edad= 50, nivelDeDolor=14, fortalezaMuscular= 40, aparatos= [magneto2, bici2, mini2])
+	
+	method initialize() {
+		centro.agregarAparato(bici2)
+		centro.agregarAparato(magneto2)
+		centro.agregarAparato(mini2)
+		centro.agregarAparato(bici3)
+		centro.agregarAparato(magneto3)
+		centro.agregarAparato(bici4)
+		
+		centro.agregarPaciente(nicolas)
+		centro.agregarPaciente(victoria)
+		centro.agregarPaciente(julian)
+		centro.agregarPaciente(zoe)
+		
+	}
+	
+
+	
+	test "Ninguno de sus aparatos necesita mantenimiento" {
+
+		assert.that(centro.estaEnOptimasCondiciones())
+
+	}
+	
+	/*
+	 * test "testX" {
+
+		assert.that(true)
+
+	}
+	 
+	 */
+	}

@@ -1,0 +1,50 @@
+import centro.*
+import aparatos.*
+import personas.*
+
+describe "Centro de kinesiología" {
+
+	const bici2= new Bicicleta(color="blanco")
+	const magneto2= new Magneto(color="blanco")
+	const mini2= new Minitramp(color="blanco") 
+	
+	const bici3= new Bicicleta(color= "rojo")
+	const magneto3= new Magneto(color= "verde")
+	const bici4= new Bicicleta(color= "blanco") 
+	
+	const nicolas= new PacienteResistente(edad= 7, nivelDeDolor=10, fortalezaMuscular= 20, aparatos= [magneto2, bici2, mini2])
+	const victoria= new PacienteCaprichoso(edad= 30, nivelDeDolor=10, fortalezaMuscular= 40, aparatos= [magneto2, bici2, mini2])
+	const julian= new PacienteCaprichoso(edad= 20, nivelDeDolor=54, fortalezaMuscular= 50, aparatos=[bici3, magneto3, bici4])
+	const zoe= new PacienteRapidaRecuperacion(edad= 50, nivelDeDolor=14, fortalezaMuscular= 40, aparatos= [magneto2, bici2, mini2])
+	
+	method initialize() {
+		centro.agregarAparato(bici2)
+		centro.agregarAparato(magneto2)
+		centro.agregarAparato(mini2)
+		centro.agregarAparato(bici3)
+		centro.agregarAparato(magneto3)
+		centro.agregarAparato(bici4)
+		
+		centro.agregarPaciente(nicolas)
+		centro.agregarPaciente(victoria)
+		centro.agregarPaciente(julian)
+		centro.agregarPaciente(zoe)
+		
+	}
+	
+	test "Los colores de los aparatos del centro son: blanco, rojo y verde" {
+
+		assert.equals(#{"blanco", "rojo", "verde"}, centro.coloresDeLosAparatos())
+
+	}
+	
+	test "Solo hay un paciente menor de 8 años" {
+		assert.equals(1, centro.pacientesMenoresDe8())
+	}
+	
+	test "Hay dos pacientes que no pueden realizar su sesión" {
+		assert.equals(2, centro.pacientesQueNoPuedenCumplirSesion())
+	}
+	
+	
+}
