@@ -20,9 +20,9 @@ describe "Leonardo y Milena" {
 	
 	test "Milena solo puede usar el magneto" {
 
-		assert.equals(false, milena.puedeUsar(bici1))
+		assert.notThat(milena.puedeUsar(bici1))
 		assert.that(milena.puedeUsar(magneto1))
-		assert.equals(false, milena.puedeUsar(mini1))
+		assert.notThat(milena.puedeUsar(mini1))
 
 
 	}

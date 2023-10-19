@@ -4,18 +4,18 @@ import personas.*
 
 describe "Centro de kinesiología" {
 
-	const bici2= new Bicicleta(color="blanco")
-	const magneto2= new Magneto(color="blanco")
-	const mini2= new Minitramp(color="blanco") 
+	const bici2= new Bicicleta()
+	const magneto2= new Magneto()
+	const mini2= new Minitramp() 
 	
 	const bici3= new Bicicleta(color= "rojo")
 	const magneto3= new Magneto(color= "verde")
-	const bici4= new Bicicleta(color= "blanco") 
+	const bici4= new Bicicleta() 
 	
-	const nicolas= new PacienteResistente(edad= 7, nivelDeDolor=10, fortalezaMuscular= 20, aparatos= [magneto2, bici2, mini2])
-	const victoria= new PacienteCaprichoso(edad= 30, nivelDeDolor=10, fortalezaMuscular= 40, aparatos= [magneto2, bici2, mini2])
-	const julian= new PacienteCaprichoso(edad= 20, nivelDeDolor=54, fortalezaMuscular= 50, aparatos=[bici3, magneto3, bici4])
-	const zoe= new PacienteRapidaRecuperacion(edad= 50, nivelDeDolor=14, fortalezaMuscular= 40, aparatos= [magneto2, bici2, mini2])
+	const nicolas= new PacienteResistente(edad= 7, nivelDeDolor=10, fortalezaMuscular= 20, rutina= [bici2, mini2, bici2, magneto2])
+	const victoria= new PacienteCaprichoso(edad= 30, nivelDeDolor=10, fortalezaMuscular= 40, rutina= [bici2, mini2, bici2, magneto2])
+	const julian= new PacienteCaprichoso(edad= 20, nivelDeDolor=54, fortalezaMuscular= 50, rutina=[bici3, magneto3, bici4])
+	const zoe= new PacienteRapidaRecuperacion(edad= 50, nivelDeDolor=14, fortalezaMuscular= 40, rutina= [bici2, mini2, bici2, magneto2])
 	
 	method initialize() {
 		centro.agregarAparato(bici2)

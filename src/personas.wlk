@@ -4,7 +4,7 @@ class Paciente {
 	var edad
 	var fortalezaMuscular
 	var nivelDeDolor
-	const aparatos= []
+	const rutina= []
 	
 	method puedeUsar(aparato)= aparato.puedeSerUsadoPor(self)
 	
@@ -22,22 +22,22 @@ class Paciente {
 	
 	method edad()= edad
 	
-	method puedeHacerRutina()= aparatos.all({aparato => self.puedeUsar(aparato)})
+	method puedeHacerRutina()= rutina.all({aparato => self.puedeUsar(aparato)})
 	
-	method hacerRutina() {if (self.puedeHacerRutina()) {aparatos.forEach({aparato => self.usar(aparato)})}}
+	method hacerRutina() {if (!self.puedeHacerRutina()) {self.error("El paciente no puede realizar la rutina.")} else {rutina.forEach({aparato => self.usar(aparato)})}}
 }
 
 class PacienteResistente inherits Paciente {
 	
 	override method hacerRutina() {
 		super()
-		fortalezaMuscular += 1 * aparatos.size()
+		fortalezaMuscular += 1 * rutina.size()
 	} 
 }
 
 class PacienteCaprichoso inherits Paciente {
 	
-	override method puedeHacerRutina()= super() && aparatos.any({aparato => aparato.color() == "rojo"})
+	override method puedeHacerRutina()= super() && rutina.any({aparato => aparato.color() == "rojo"})
 	override method hacerRutina() {
 		super()
 		super()

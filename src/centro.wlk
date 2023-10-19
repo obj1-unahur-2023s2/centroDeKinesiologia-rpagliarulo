@@ -20,7 +20,7 @@ object centro {
 	
 	method estaEnOptimasCondiciones()= aparatosDelCentro.all({aparato => !aparato.necesitaMantenimiento()})
 	
-	method estaComplicado()= aparatosDelCentro.filter({aparato => aparato.necesitaMantenimiento()}) >= aparatosDelCentro.size() / 2
+	method estaComplicado()= aparatosDelCentro.filter({aparato => aparato.necesitaMantenimiento()}).size() >= (aparatosDelCentro.size() / 2)
 
 	method visitaDeTecnico() {aparatosDelCentro.forEach({ aparato => aparato.recibirMantenimiento()})}
 	
