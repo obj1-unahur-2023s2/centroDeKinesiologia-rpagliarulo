@@ -39,7 +39,7 @@ describe "Centro de kinesiología" {
 	}
 	
 	test "Solo hay un paciente menor de 8 años" {
-		assert.equals(1, centro.pacientesMenoresDe8())
+		assert.equals(#{nicolas}, centro.pacientesMenoresDe8())
 	}
 	
 	test "Hay dos pacientes que no pueden realizar su sesión" {

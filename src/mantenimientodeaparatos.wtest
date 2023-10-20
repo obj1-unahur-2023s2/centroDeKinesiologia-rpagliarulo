@@ -5,7 +5,7 @@ import aparatos.*
 describe "Magneto" {
 	
 	const magneto1= new Magneto(color= "verde")
-	const julian= new PacienteCaprichoso(edad= 20, nivelDeDolor=54, fortalezaMuscular= 50, rutina=[magneto1])
+	const julian= new Paciente(edad= 20, nivelDeDolor=54, fortalezaMuscular= 50, rutina=[magneto1])
 
 	test "Un magneto nuevo tiene 800 puntos de imantación" {
 
@@ -38,8 +38,8 @@ describe "Bicicleta" {
 	const bici1= new Bicicleta(color= "rojo")
 	const bici2= new Bicicleta(color= "rojo")
 	
-	const victoria= new PacienteResistente(edad= 29, nivelDeDolor=40, fortalezaMuscular= 20, rutina= [bici1])
-	const mariela= new PacienteResistente(edad= 35, nivelDeDolor=10, fortalezaMuscular= 40, rutina= [bici2])
+	const victoria= new Paciente(edad= 29, nivelDeDolor=40, fortalezaMuscular= 20, rutina= [bici1])
+	const mariela= new Paciente(edad= 35, nivelDeDolor=10, fortalezaMuscular= 40, rutina= [bici2])
 
 	test "Si el nivel de dolor del paciente antes del uso es mayor a 30, entonces se desajustan los tornillos. " {
 		
@@ -80,10 +80,10 @@ describe "Centro de Kinesiología" {
 	const magneto3= new Magneto(color= "verde")
 	const bici4= new Bicicleta(color= "blanco") 
 	
-	const nicolas= new PacienteResistente(edad= 7, nivelDeDolor=10, fortalezaMuscular= 20, rutina= [magneto2, bici2, mini2])
-	const victoria= new PacienteCaprichoso(edad= 30, nivelDeDolor=10, fortalezaMuscular= 40, rutina= [magneto2, bici2, mini2])
-	const julian= new PacienteCaprichoso(edad= 20, nivelDeDolor=54, fortalezaMuscular= 50, rutina=[bici3, magneto3, bici4])
-	const zoe= new PacienteRapidaRecuperacion(edad= 50, nivelDeDolor=14, fortalezaMuscular= 40, rutina= [magneto2, bici2, mini2])
+	const nicolas= new Paciente(edad= 7, nivelDeDolor=10, fortalezaMuscular= 20, rutina= [magneto2, bici2, mini2])
+	const victoria= new Paciente(edad= 30, nivelDeDolor=10, fortalezaMuscular= 40, rutina= [magneto2, bici2, mini2])
+	const julian= new Paciente(edad= 20, nivelDeDolor=54, fortalezaMuscular= 50, rutina=[bici3, magneto3, bici4])
+	const zoe= new Paciente(edad= 50, nivelDeDolor=14, fortalezaMuscular= 40, rutina= [magneto2, bici2, mini2])
 	
 	method initialize() {
 		centro.agregarAparato(bici2)

@@ -3,15 +3,12 @@ import personas.*
 
 describe "Rutinas" {
 	
-	const bici1= new Bicicleta()
-	const magneto1= new Magneto()
-	
 	const bici2= new Bicicleta()
 	const magneto2= new Magneto()
 	const mini2= new Minitramp() 
 	
-	const leonardo = new Paciente(edad= 40, nivelDeDolor= 10, fortalezaMuscular= 20, aparatos= [magneto2, bici2, mini2])
-	const milena= new Paciente(edad= 3, nivelDeDolor= 30, fortalezaMuscular= 50,  aparatos= [magneto1, bici1])
+	const leonardo = new Paciente(edad= 40, nivelDeDolor= 10, fortalezaMuscular= 20, rutina= [bici2, mini2, bici2, magneto2])
+	const milena= new Paciente(edad= 3, nivelDeDolor= 30, fortalezaMuscular= 50,  rutina= [new Magneto(), new Bicicleta()])
 	
 	test "Leonardo puede hacer la rutina que tiene asignada" {
 
@@ -19,16 +16,23 @@ describe "Rutinas" {
 
 	}
 	
-	test "Despues de hacerla una vez, su nivel de dolor baja a 1.8 y su fortaleza sube a 30" {
+	test "Despues de hacerla una vez, su nivel de dolor baja a 1.8" {
 		leonardo.hacerRutina()
 		assert.equals(1.8, leonardo.nivelDeDolor())
+		
+
+	}
+	
+	test "su fortaleza sube a 30" {
+		leonardo.hacerRutina()
 		assert.equals(30, leonardo.fortalezaMuscular())
 
 	}
 	
+	
 	test "Milena no puede hacer la rutina que tiene asignada" {
 
-		assert.equals(false, milena.puedeHacerRutina())
+		assert.notThat(milena.puedeHacerRutina())
 
 	}
 	

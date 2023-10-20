@@ -9,11 +9,10 @@ describe "Pacientes especiales" {
 	
 	const bici3= new Bicicleta(color= "rojo")
 	const magneto3= new Magneto(color= "verde")
-	const bici4= new Bicicleta() 
 	
 	const nicolas= new PacienteResistente(edad= 40, nivelDeDolor=10, fortalezaMuscular= 20, rutina= [bici2, mini2, bici2, magneto2])
 	const victoria= new PacienteCaprichoso(edad= 30, nivelDeDolor=10, fortalezaMuscular= 40, rutina= [bici2, mini2, bici2, magneto2])
-	const julian= new PacienteCaprichoso(edad= 20, nivelDeDolor=54, fortalezaMuscular= 50, rutina=[bici3, magneto3, bici4])
+	const julian= new PacienteCaprichoso(edad= 20, nivelDeDolor=54, fortalezaMuscular= 50, rutina=[bici3, magneto3, new Bicicleta()])
 	const zoe= new PacienteRapidaRecuperacion(edad= 50, nivelDeDolor=14, fortalezaMuscular= 40, rutina= [bici2, mini2, bici2, magneto2])
 	
 	test "Nicolás puede hacer la rutina que tiene asignada." {
@@ -59,7 +58,7 @@ describe "Pacientes especiales" {
 	test "Después de asignar a 2 el valor de decremento de dolor para pacientes de rápida recuperación, 
 		y de que Zoe haga su rutinauna vez, su nivel de dolor baja a 3.4, y su fortaleza sube a 51." {
 		
-		zoe.puntosDeDolorQueDecrementa(2)
+		puntosDeDolorQueDecrementa.valor(2)
 		zoe.hacerRutina()
 		assert.equals(3.4, zoe.nivelDeDolor())
 		assert.equals(51, zoe.fortalezaMuscular())

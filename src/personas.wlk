@@ -31,13 +31,14 @@ class PacienteResistente inherits Paciente {
 	
 	override method hacerRutina() {
 		super()
-		fortalezaMuscular += 1 * rutina.size()
+		fortalezaMuscular += rutina.size()
 	} 
 }
 
 class PacienteCaprichoso inherits Paciente {
 	
-	override method puedeHacerRutina()= super() && rutina.any({aparato => aparato.color() == "rojo"})
+	override method puedeHacerRutina()= super() && self.hayAparatoRojo()
+	method hayAparatoRojo()= rutina.any({aparato => aparato.color() == "rojo"})
 	override method hacerRutina() {
 		super()
 		super()
@@ -45,10 +46,13 @@ class PacienteCaprichoso inherits Paciente {
 }
 
 class PacienteRapidaRecuperacion inherits Paciente {
-	var property puntosDeDolorQueDecrementa= 3
 	
 	override method hacerRutina() {
 		super()
-		nivelDeDolor -= puntosDeDolorQueDecrementa
+		nivelDeDolor -= 0.max(puntosDeDolorQueDecrementa.valor())
 	}
+}
+
+object puntosDeDolorQueDecrementa {
+	var property valor= 3
 }

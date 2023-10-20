@@ -1,14 +1,14 @@
 import personas.* 
 
 class Aparato {
-	var property color= "blanco"
+	const property color= "blanco"
 	
 	method reduccionDeDolor(paciente)= 4
 	method aumentoFortalezaMuscular(paciente)= 0
 	method puedeSerUsadoPor(paciente)= true
 	method necesitaMantenimiento()= false
 	method recibirMantenimiento() {}
-	method consecuenciaDeUso(paciente) {} 
+	method consecuenciaDeUso(paciente) 
 }
 
 class Magneto inherits Aparato {
@@ -16,8 +16,8 @@ class Magneto inherits Aparato {
 	
 	override method reduccionDeDolor(paciente)= paciente.nivelDeDolor() * 0.1
 	override method necesitaMantenimiento()= imantacion < 100
-	override method recibirMantenimiento() {imantacion += 500}
-	override method consecuenciaDeUso(paciente) {imantacion -= 1}
+	override method recibirMantenimiento() {imantacion= 800.min(imantacion += 500)}
+	override method consecuenciaDeUso(paciente) {imantacion= 0.max(imantacion -= 1)}
 	method imantacion()=imantacion
 
 }
@@ -32,9 +32,9 @@ class Bicicleta inherits Aparato {
 	override method recibirMantenimiento() {vecesQueSeDesajustaronLosTornillos= 0 vecesQuePerdioAceite= 0}
 	override method consecuenciaDeUso(paciente) {
 		if (paciente.nivelDeDolor()> 30) {
-			vecesQueSeDesajustaronLosTornillos += 1}
-		if (paciente.edad()>= 30 && paciente.edad()<= 50) {
-			vecesQuePerdioAceite +=1
+			vecesQueSeDesajustaronLosTornillos++}
+		if (paciente.edad().between(30,50)) {
+			vecesQuePerdioAceite++
 		} 
 	}
 	method vecesQueSeDesajustaronLosTornillos()= vecesQueSeDesajustaronLosTornillos
@@ -46,6 +46,7 @@ class Minitramp inherits Aparato {
 	
 	override method aumentoFortalezaMuscular(paciente)= paciente.edad() * 0.1
 	override method puedeSerUsadoPor(paciente)= paciente.nivelDeDolor() < 20
+	override method consecuenciaDeUso(paciente) {}
 
 }
 

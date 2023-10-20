@@ -2,7 +2,7 @@ import aparatos.*
 
 object centro {
 	const aparatosDelCentro= []
-	const pacientes= []
+	const pacientes= #{}
 	
 	method agregarAparato(aparato) {aparatosDelCentro.add(aparato)}
 	
@@ -14,15 +14,17 @@ object centro {
 	
 	method coloresDeLosAparatos()= aparatosDelCentro.map({aparato => aparato.color()}).asSet()
 	
-	method pacientesMenoresDe8()= pacientes.count({paciente => paciente.edad() < 8})
+	method pacientesMenoresDe8()= pacientes.filter({paciente => paciente.edad() < 8})
 	
 	method pacientesQueNoPuedenCumplirSesion()= pacientes.count({paciente => !paciente.puedeHacerRutina()})
 	
 	method estaEnOptimasCondiciones()= aparatosDelCentro.all({aparato => !aparato.necesitaMantenimiento()})
 	
-	method estaComplicado()= aparatosDelCentro.filter({aparato => aparato.necesitaMantenimiento()}).size() >= (aparatosDelCentro.size() / 2)
+	method estaComplicado()= self.aparatosParaMantenimiento().size() >= (aparatosDelCentro.size() / 2)
+	
+	method aparatosParaMantenimiento()= aparatosDelCentro.filter({aparato => aparato.necesitaMantenimiento()})
 
-	method visitaDeTecnico() {aparatosDelCentro.forEach({ aparato => aparato.recibirMantenimiento()})}
+	method visitaDeTecnico() {self.aparatosParaMantenimiento().forEach({ aparato => aparato.recibirMantenimiento()})}
 	
 	
 }
